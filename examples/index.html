@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es" data-jz-sound="on" data-moki-show="5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<title>Papacito Juice · demo del perfil</title>
+<!-- Run `npm run setup` first: vendor/ is generated and verified, never committed.
+     Moki artwork in vendor/ is not MIT, see NOTICES. -->
+<link rel="stylesheet" href="../src/papacito-juice.css">
+<link rel="stylesheet" href="../vendor/juice/1.2.0/juice.css">
+<link rel="stylesheet" href="../vendor/juice/1.2.0/juice-menu.css">
+<link rel="stylesheet" href="../vendor/juice/1.2.0/hardcore/hardcore.css">
+<link rel="stylesheet" href="../vendor/juice/1.2.0/moki/moki.css">
+<link rel="stylesheet" href="../vendor/cursor-liquido/cursor-liquido.css">
+<link rel="stylesheet" href="../vendor/game-feel/game-feel-cursor.css">
+<style>
+:root { color-scheme: dark; background: var(--brand-bg); color: var(--brand-text-on-dark); font-family: var(--brand-font-body); }
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.5; }
+header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid #2a2a2a; }
+/* The Juega panel opens toward the left from the dock, so the dock stays on the right edge. */
+header nav { margin-left: auto; display: flex; gap: 8px; }
+.mark { font: 700 18px/1.2 var(--brand-font-heading); letter-spacing: -.02em; color: var(--brand-text-on-dark); text-decoration: none; }
+.mark small { display: block; font: 400 12px var(--brand-font-body); color: var(--brand-text-muted); }
+main { max-width: 980px; margin: 0 auto; padding: 8px 24px 24px; }
+h1, h2, h3 { font-family: var(--brand-font-heading); letter-spacing: -.02em; }
+h1 { font-size: clamp(30px, 6vw, 52px); line-height: 1.05; margin: 24px 0 12px; }
+h2 { font-size: 24px; margin: 0 0 8px; }
+h3 { font-size: 18px; margin: 0 0 6px; }
+p { color: var(--brand-text-muted); max-width: 62ch; margin: 0 0 12px; }
+/* Panels leave room above them: arriba and saluda Moki appear in that gap, never over content. */
+.panel { position: relative; margin-top: 132px; padding: 20px; border: 1px solid var(--brand-border); border-radius: 18px; background: var(--brand-surface); }
+/* Empty strips where Moki hangs (cuelga) or peeks from the side (asoma). */
+.moki-stage { position: relative; height: 190px; margin-top: 28px; border-top: 2px solid var(--brand-border); }
+.moki-stage--side { height: 140px; border-top: 0; border-right: 2px solid var(--brand-border); }
+.btn { min-height: 44px; padding: 10px 16px; border-radius: 6px; border: 1px solid var(--brand-border); background: #1f1f1f; color: var(--brand-text-on-dark); font: inherit; cursor: pointer; }
+.btn--primary { background: var(--brand-accent); border-color: var(--brand-accent); color: var(--brand-ink); font-weight: 600; }
+.btn:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--brand-accent); outline-offset: 3px; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+label.field { display: grid; gap: 4px; font-size: 14px; color: var(--brand-text-muted); flex: 1 1 220px; }
+label.field input { min-height: 44px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--brand-border); background: var(--brand-bg); color: var(--brand-text-on-dark); font: inherit; width: 100%; }
+[data-status] { min-height: 1.5em; font-size: 14px; color: var(--brand-text-muted); margin: 8px 0 0; flex-basis: 100%; }
+[data-status].is-error { color: var(--brand-accent); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.idea-card { padding: 16px; border: 1px solid #2f2f2f; border-radius: 12px; background: var(--brand-bg); }
+.idea-card p { margin: 0; }
+#cursor-status, #moki-status { font: 12px/1.5 ui-monospace, monospace; color: var(--brand-text-muted); white-space: pre-wrap; display: block; }
+footer { padding: 24px; border-top: 1px solid #2a2a2a; color: var(--brand-text-muted); font-size: 14px; }
+footer a { color: var(--brand-accent); }
+</style>
+</head>
+<body>
+<header>
+  <a class="mark" href="https://jorgesuarez.com.mx">JorgeSuarez.com.mx<small>Papacito Juice · demo del perfil</small></a>
+  <nav aria-label="Juego y sonido"><button type="button" class="juice-sfx"></button></nav>
+</header>
+<main>
+  <h1>Juega con la página</h1>
+  <p>Perfil de la marca personal: juice 1.2.0, Moki autorizado y Cursor líquido por el adapter genérico de Game Feel. Cambia el nivel en «Juega», prueba las acciones y busca a los Mokis de hoy.</p>
+  <output id="cursor-status" aria-live="polite"></output>
+  <output id="moki-status" aria-live="polite"></output>
+
+  <section class="panel" id="actions" aria-labelledby="actions-title">
+    <span data-moki="arriba" data-moki-id="demo-arriba-acciones" style="--moki-r: 6%"></span>
+    <h2 id="actions-title">Acciones núcleo</h2>
+    <p>Un toque responde chico. Guardar una nota responde con más cuerpo. Un error tiembla y lo dice.</p>
+    <div class="row">
+      <button type="button" class="btn btn--primary" data-jz="jz-tap" id="tap">Dar un toque</button>
+    </div>
+    <form id="note-form" class="row" novalidate>
+      <label class="field">Nota
+        <input id="note" name="note" autocomplete="off" placeholder="Escribe algo corto">
+      </label>
+      <button type="submit" class="btn" id="save">Guardar nota</button>
+      <p data-status id="note-status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <div class="moki-stage" aria-hidden="false"><span data-moki="cuelga" data-moki-id="demo-cuelga-1"></span></div>
+
+  <section class="panel" id="ideas" aria-labelledby="ideas-title">
+    <span data-moki="saluda" data-moki-id="demo-saluda-ideas" style="--moki-r: 10%"></span>
+    <h2 id="ideas-title">Cómo responde</h2>
+    <div class="grid">
+      <article class="idea-card"><h3>Poquito</h3><p>Puntos de 7 px detrás del puntero y respuestas discretas.</p></article>
+      <article class="idea-card"><h3>Mucho</h3><p>Fluido de 10 px, botones que se acercan y tarjetas que se inclinan.</p></article>
+      <article class="idea-card"><h3>Hardcore</h3><p>Fluido de 18 px, combos y escombro. Se abre al encontrar a todos los Mokis de hoy.</p></article>
+    </div>
+  </section>
+
+  <div class="moki-stage moki-stage--side"><span data-moki="asoma" data-moki-id="demo-asoma-1"></span></div>
+
+  <section class="panel" id="rules" aria-labelledby="rules-title">
+    <span data-moki="arriba" data-moki-id="demo-arriba-reglas" style="--moki-r: 12%"></span>
+    <h2 id="rules-title">Reglas que no cambian</h2>
+    <p>Movimiento reducido fuerza Nada. Si apagas el sonido, se queda apagado. Moki nunca tapa un botón y en Nada se queda quieto.</p>
+  </section>
+
+  <div class="moki-stage"><span data-moki="cuelga" data-moki-id="demo-cuelga-2" style="--moki-r: 70%"></span></div>
+
+  <section class="panel" id="close" aria-labelledby="close-title">
+    <span data-moki="saluda" data-moki-id="demo-saluda-cierre" style="--moki-r: 8%"></span>
+    <h2 id="close-title">Mañana se esconden en otro lado</h2>
+    <p>Los escondites cambian cada día. Encontrarlos a todos abre Hardcore en «Juega».</p>
+  </section>
+</main>
+<footer><a href="https://jorgesuarez.com.mx">← JorgeSuarez.com.mx</a> · Código MIT. Moki y la marca personal no son MIT.</footer>
+<script src="../vendor/juice/1.2.0/juice.js" defer></script>
+<script src="../vendor/juice/1.2.0/juice-menu.js" defer></script>
+<script src="../vendor/juice/1.2.0/hardcore/hardcore.js" defer></script>
+<script src="../vendor/juice/1.2.0/moki/moki.js" defer></script>
+<script src="../vendor/cursor-liquido/cursor-liquido.js" defer></script>
+<script src="../vendor/game-feel/game-feel-cursor.js" defer></script>
+<script src="../src/papacito-juice.js" defer></script>
+<script src="demo.js" defer></script>
+</body>
+</html>

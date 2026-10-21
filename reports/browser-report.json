@@ -1,0 +1,173 @@
+{
+  "suite": "papacito-juice",
+  "started": "2026-10-21T12:02:24.891Z",
+  "playwright": "1.64.1",
+  "chromium": "156.0.8078.4",
+  "renderer": "Chromium headless with SwiftShader WebGL. Emulated viewports, not physical devices.",
+  "total": 16,
+  "passed": 16,
+  "failed": 0,
+  "results": [
+    {
+      "name": "profile mounts with real Moki 1.2.0: distinct poses, authorized artwork bytes",
+      "status": "PASS",
+      "detail": {
+        "poses": [
+          "lado",
+          "frente",
+          "compu",
+          "saluda",
+          "jugando"
+        ],
+        "owner": "liquid"
+      }
+    },
+    {
+      "name": "Hardcore is locked until today's Mokis are found, the profile does not unlock it",
+      "status": "PASS",
+      "detail": {
+        "disabled": true,
+        "stored": null,
+        "attr": null
+      }
+    },
+    {
+      "name": "Juega off maps to nada, Moki stays",
+      "status": "PASS",
+      "detail": {
+        "intensity": "nada",
+        "radius": 0,
+        "moki": {
+          "count": 5,
+          "still": true
+        }
+      }
+    },
+    {
+      "name": "Juega subtle maps to poquito, Moki stays",
+      "status": "PASS",
+      "detail": {
+        "intensity": "poquito",
+        "radius": 0,
+        "moki": {
+          "count": 5,
+          "still": false
+        }
+      }
+    },
+    {
+      "name": "Juega full maps to mucho, Moki stays",
+      "status": "PASS",
+      "detail": {
+        "intensity": "mucho",
+        "radius": 10,
+        "moki": {
+          "count": 5,
+          "still": false
+        }
+      }
+    },
+    {
+      "name": "finding all Mokis with real clicks unlocks Hardcore, which maps to 18 px",
+      "status": "PASS",
+      "detail": {
+        "found": 5,
+        "intensity": "hardcore",
+        "oldTrailNodes": 3,
+        "visibleOldTrail": 0,
+        "celebrationParticles": 17
+      }
+    },
+    {
+      "name": "clicks and typing work at every level",
+      "status": "PASS",
+      "detail": "ok"
+    },
+    {
+      "name": "Moki never covers controls or text at 1280 px",
+      "status": "PASS",
+      "detail": {
+        "overlaps": 0
+      }
+    },
+    {
+      "name": "destroy restores compatibility, remount is clean",
+      "status": "PASS",
+      "detail": {
+        "after": {
+          "owner": false,
+          "layers": 0,
+          "moki": 5,
+          "level": "hard"
+        },
+        "again": {
+          "layers": 2,
+          "owner": "liquid"
+        }
+      }
+    },
+    {
+      "name": "same origin only, no console errors",
+      "status": "PASS",
+      "detail": {
+        "requests": 46
+      }
+    },
+    {
+      "name": "missing moki.js: mount rejects with a clear error and changes nothing",
+      "status": "PASS",
+      "detail": {
+        "error": "PapacitoJuice.mount: authorized Moki 1.2.0 is not installed (moki/moki.js). Papacito Juice always includes Moki. For a page without Moki use GameFeelCursor from game-feel."
+      }
+    },
+    {
+      "name": "missing Moki artwork: mount rejects and names the file",
+      "status": "PASS",
+      "detail": {
+        "error": "PapacitoJuice.mount: Moki artwork is missing or unreadable: moki-verifica.webp. Install the authorized files from juice 1.2.0 (npm run setup)."
+      }
+    },
+    {
+      "name": "home pages start in Mucho through page configuration",
+      "status": "PASS",
+      "detail": {
+        "page": "home",
+        "level": "full",
+        "intensity": "mucho",
+        "stored": null
+      }
+    },
+    {
+      "name": "reduced motion from the first load: Nada, still Moki, no dots",
+      "status": "PASS",
+      "detail": {
+        "level": "off",
+        "intensity": "nada",
+        "dots": 0,
+        "still": true,
+        "moki": 5
+      }
+    },
+    {
+      "name": "the visitor's mute and level choices are not overridden",
+      "status": "PASS",
+      "detail": {
+        "pressed": "false",
+        "level": "off",
+        "intensity": "nada",
+        "sfx": "off",
+        "stored": "off"
+      }
+    },
+    {
+      "name": "375 px: Juega works, nothing overflows, Moki covers nothing",
+      "status": "PASS",
+      "detail": {
+        "off": 360,
+        "subtle": 360,
+        "full": 360,
+        "hard": 363
+      }
+    }
+  ]
+}

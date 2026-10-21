@@ -1,0 +1,47 @@
+// Pins and verification rules of scripts/setup-demo.mjs. Tests that need the
+// real files read vendor/ and are skipped until `npm run setup` has run.
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { CURSOR, GAME_FEEL, JUICE, VENDOR, checkCursorBundle, engineSha256, sha256, verifyVendor } from '../../scripts/setup-demo.mjs';
+
+const hasVendor = existsSync(join(VENDOR, 'setup-report.json'));
+
+test('juice pin is the canonical 1.2.0 commit with all 20 files, Moki included', () => {
+  assert.equal(JUICE.version, '1.2.0');
+  assert.equal(JUICE.commit, 'f1b3b9c77a43ffbcbd331bb88420a436614fdbc3');
+  assert.equal(Object.keys(JUICE.files).length, 20);
+  assert.equal(Object.keys(JUICE.files).filter(f => /^moki\/moki-.*\.webp$/.test(f)).length, 12);
+  assert.ok(JUICE.files['moki/moki.js'] && JUICE.files['moki/moki.css']);
+  for (const h of Object.values(JUICE.files)) assert.match(h, /^[0-9a-f]{64}$/);
+});
+
+test('Game Feel adapter is pinned, not forked', () => {
+  assert.deepEqual(Object.keys(GAME_FEEL.files).sort(), ['game-feel-cursor.css', 'game-feel-cursor.js']);
+  assert.ok(GAME_FEEL.base.includes('/jorgefsb/game-feel/v1.0.0/src/'));
+  assert.ok(!existsSync(new URL('../../src/game-feel-cursor.js', import.meta.url)), 'no adapter copy in src/');
+});
+
+test('cursor pin is the approved renderer and release 1.0.0', () => {
+  assert.equal(CURSOR.goldenEngineSha256, '3d478cc836969c216812c7e479724e0e204bbb76a26df24c2414568883021230');
+  assert.equal(CURSOR.sources.renderer.sha256, CURSOR.goldenEngineSha256);
+  assert.ok(CURSOR.release.endsWith('/releases/download/v1.0.0/'));
+});
+
+test('a bundle without the approved renderer is rejected', () => {
+  const fake = Buffer.from('/*! x */\n' + CURSOR.engineHeader + ' but different bytes */\nroot.FluidEngine=ApprovedEngineAdapter\nroot.LiquidCursor = LiquidCursor');
+  assert.notEqual(engineSha256(fake), CURSOR.goldenEngineSha256);
+  assert.throws(() => checkCursorBundle(fake), /does not contain the approved renderer/);
+  assert.equal(engineSha256(Buffer.from('no engine here')), null);
+});
+
+test('vendor/ matches every pin and the upstream manifest', { skip: !hasVendor && 'run npm run setup first' }, () => {
+  const report = verifyVendor();
+  const manifest = JSON.parse(readFileSync(join(VENDOR, 'juice', '1.2.0', 'manifest.json')));
+  for (const [name, h] of Object.entries(JUICE.files)) assert.equal(manifest.files[name].sha256, h);
+  const bundle = readFileSync(join(VENDOR, 'cursor-liquido', 'cursor-liquido.js'));
+  assert.equal(engineSha256(bundle), CURSOR.goldenEngineSha256);
+  assert.equal(report.cursor.files['cursor-liquido.js'], sha256(bundle));
+  for (const [name, h] of Object.entries(GAME_FEEL.files)) assert.equal(sha256(readFileSync(join(VENDOR, 'game-feel', name))), h);
+});
