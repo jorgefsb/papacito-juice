@@ -1,78 +1,97 @@
 # Papacito Juice 1.0.1
 
-Perfil de la marca personal de Jorge Suárez: microinteracciones, sonido, Moki y Cursor líquido coordinados desde el menú «Juega». Siempre incluye Moki real; sin él, usa Game Feel genérico.
+[Español](README.md) · [English](README.en.md)
 
-[Repositorio](https://github.com/jorgefsb/papacito-juice) · [Versión 1.0.1](https://github.com/jorgefsb/papacito-juice/releases/tag/v1.0.1) · [Cursor líquido 1.0.1](https://github.com/jorgefsb/cursor-liquido/releases/tag/v1.0.1)
+![Papacito Juice: firma oficial y demostración real](docs/media/cover.es.png)
 
-![Demo real: cambio de intensidad del cursor](docs/media/demo.gif)
+[Portada móvil](docs/media/cover.es.mobile.png)
 
-[Ver el video MP4](docs/media/demo.mp4). Capturas y grabación de [examples/](examples/index.html), con eventos reales del puntero y sin tinta simulada. Chromium con WebGL por SwiftShader; no es una prueba en un teléfono físico.
+Familia de herramientas de Jorge Suárez. [Papacito Juice](https://github.com/jorgefsb/papacito-juice) · [Game Feel](https://github.com/jorgefsb/game-feel) · [Brandkit oficial](https://brandkit.jorgesuarez.com.mx/)
 
-## Qué hace
+## ¿Qué es?
 
-Al tocar, escribir o guardar, la página responde con movimiento y sonido según el nivel elegido. Cursor líquido añade la estela del puntero. El adaptador evita que la estela vieja de Hardcore se dibuje encima: conserva las celebraciones y no bloquea clics, escritura ni scroll. El puntero nativo permanece visible.
+Un perfil de la marca personal de Jorge Suárez que coordina microinteracciones, sonido, Moki y Cursor líquido desde «Juega». Moki real es obligatorio: sin él, usa Game Feel.
 
-| Juega | Valor | Respuesta del cursor |
+## ¿Para quién es?
+
+Para las páginas de la marca personal de Jorge y el equipo técnico autorizado que las integra. No es para trasladar a Moki a otras marcas.
+
+## ¿Por qué existe?
+
+Para que la marca personal se sienta consistente sin duplicar cursores ni pisar las preferencias del visitante.
+
+## ¿Cómo lo uso?
+
+Primero mira la [demostración explicada](docs/media/README.md). En una página ya integrada abre «Juega», elige Poquito o Mucho, toca un botón y apaga el sonido si lo prefieres. Encuentra los Mokis del día para abrir Hardcore.
+
+## ¿Cuándo conviene y cuándo no?
+
+Úsalo solo con permiso de marca y espacio para Moki. No lo uses como efecto obligatorio, en otra marca o si dificulta leer o completar la tarea.
+
+## ¿Dónde lo pruebo o descargo?
+
+Código y seguimiento en el [repositorio](https://github.com/jorgefsb/papacito-juice). La demo ejecutable está en [examples/](examples/index.html); necesita un servidor local preparado por alguien técnico. No hay paquete npm publicado ni servicio alojado verificado en esta revisión.
+
+Esta biblioteca no se instala sola en tu sitio. Si solo quieres verla, pide al equipo técnico que abra la demo; el siguiente apartado es para ese equipo. Movimiento reducido fuerza Nada.
+
+## Lo que muestra la demo
+
+![Juega: Poquito, Mucho, Hardcore](docs/media/demo.gif)
+
+[MP4](docs/media/demo.mp4) · [Captions ES](docs/media/demo.es.vtt) · [Captions EN](docs/media/demo.en.vtt) · [Transcripción / Transcript](docs/media/README.md)
+
+Grabación real de `examples/`, Chromium con WebGL por SwiftShader, eventos reales de puntero. No es una prueba en teléfono físico ni una medida de rendimiento GPU. Texto y notas: datos de demostración.
+
+| Juega | API | Cursor |
 |---|---|---|
-| Nada | `off` | Sin efecto; reduced motion fuerza este nivel |
-| Poquito | `subtle` | Puntos originales de 7 px, sin WebGL |
-| Mucho | `full` | Fluido con radio de 10 px CSS |
-| Hardcore | `hard` | Fluido con radio de 18 px CSS |
+| Nada | `off` | Apagado; movimiento reducido |
+| Poquito | `subtle` | Puntos de 7 px, sin WebGL |
+| Mucho | `full` | Fluido, radio 10 px CSS |
+| Hardcore | `hard` | Fluido, radio 18 px CSS |
 
-No hay quinto nivel estable. El visitante conserva su elección de sonido y nivel.
+El puntero nativo queda visible. El adaptador oculta la estela vieja de Hardcore, no las celebraciones; esos nodos ocultos aún se crean. El fluido usa mezcla `screen`, se aprecia mejor sobre oscuro y puede bajar calidad o pausarse por presupuesto. No hay quinto nivel estable: [Legendario](docs/roadmap.md) es propuesta.
 
-### Poquito
-![Poquito: puntos originales](docs/media/poquito.png)
+## Equipo técnico: ejecutar e integrar
 
-### Mucho
-![Mucho: fluido de 10 px](docs/media/mucho.png)
-
-### Hardcore
-![Hardcore: fluido de 18 px](docs/media/hardcore.png)
-
-### Moki real
-![Moki visible en la demo de marca personal](docs/media/moki.png)
-
-`PapacitoJuice.mount()` exige Moki 1.2.0 y comprueba sus 12 poses. Si falta el script, los escondites o el arte, rechaza la instalación sin montar el cursor. Moki queda quieto en Nada y conserva sus escondidas diarias. Hardcore se desbloquea al encontrar los Mokis del día.
-
-## Instalar y probar
-
-Requiere Node.js 20 o posterior. No hay paquete publicado en npm.
+Requiere Node.js 20+, npm, navegador moderno y WebGL para el fluido. Necesita integración HTML/CSS/JS; no es un servicio listo para cuentas finales.
 
 ```sh
 npm ci
 npm run setup
 npm run verify
 npm run demo
+# En otra terminal
 npm test
+npx playwright install chromium
 npm run test:browser
 ```
 
-Abre la dirección que imprime el servidor y entra a `/examples/`. `setup` descarga las dependencias de fuentes versionadas y verifica sus SHA-256 antes de escribir `vendor/`. No necesita opciones locales. Para ejecutar Chromium instala su navegador con `npx playwright install chromium`.
+Abre `/examples/` en la dirección que imprime el servidor; termina con Ctrl+C. `setup` descarga fuentes fijadas y comprueba SHA-256. Requiere red para esa descarga; el runtime sirve todo desde el mismo origen. Si el release no está accesible, no cambies pins: usa copias exactas verificadas.
 
-Para una comprobación sin descargar releases puedes usar `npm run setup -- --cursor-dir ruta/a/cursor-liquido/dist --game-feel-dir ruta/a/game-feel`. Solo se acepta el `dist` estable 1.0.1 con manifest, JS y CSS exactos. No existe un fallback que empaquete fuentes antiguas. `--juice-dir` permite una copia local del mismo núcleo verificado.
+```sh
+npm run setup -- --cursor-dir ruta/a/cursor-liquido/dist --game-feel-dir ruta/a/game-feel
+```
 
-## Versiones y garantías
+`--juice-dir` admite el mismo núcleo local verificado. El `dist` de Cursor líquido debe ser el estable 1.0.1 con manifest, JS y CSS exactos; no existe fallback a fuentes antiguas.
 
-- **Papacito Juice 1.0.1** es la versión de este perfil.
-- **juice 1.2.0** es otro paquete: permanece byte por byte en el commit `f1b3b9c77a43ffbcbd331bb88420a436614fdbc3` de [game-industry-resources](https://github.com/jorgefsb/game-industry-resources/tree/f1b3b9c77a43ffbcbd331bb88420a436614fdbc3/juice/1.2.0).
-- **Cursor líquido 1.0.1 estable** conserva renderer y adaptador aprobados. Incluye el guard externo que preserva input pendiente cuando baja la calidad, sin cambiar shaders, color ni presupuesto de cuadros.
-- **Game Feel 1.0.1** se descarga del tag versionado y se verifica con los hashes del adaptador genérico. Los 20 archivos de juice, incluyendo Moki, se verifican contra el manifest upstream.
+Sirve juice 1.2.0 completo, Cursor líquido 1.0.1, Game Feel 1.0.1 y `src/papacito-juice.{js,css}` desde tu origen. `await PapacitoJuice.mount({ page: 'page' })` valida Moki 1.2.0 y sus 12 poses antes de montar el cursor. Para la home usa `{ page: 'home' }` y `data-jz-default="full"`. Sin script, escondites o arte de Moki la instalación se rechaza.
 
-Los hashes completos están en [scripts/setup-demo.mjs](scripts/setup-demo.mjs). `verify` comprueba los archivos en disco contra pins propios, no solo contra un informe generado. El bundle se valida completo y también por renderer, adapter, guard y wrapper.
+## Estado, costos, privacidad y ayuda
 
-## Integrar en otra página
+Esta revisión es documentación local: no publica versiones ni verifica un despliegue. El perfil/adaptador sigue en **1.0.1**; juice es **1.2.0**, commit `f1b3b9c77a43ffbcbd331bb88420a436614fdbc3`. Los pins de [setup](scripts/setup-demo.mjs) mandan; `verify` valida disco, bundle, renderer, adapter, guard y wrapper. El guard preserva input pendiente al bajar calidad sin cambiar shaders ni presupuesto.
 
-Sirve desde tu propio origen juice 1.2.0 completo, Cursor líquido 1.0.1, Game Feel 1.0.1 y `src/papacito-juice.{js,css}`. Configura `<html data-jz-sound="on">`, los escondites `[data-moki]` y llama `await PapacitoJuice.mount({ page: 'page' })`. Para la home añade `data-jz-default="full"` y usa `{ page: 'home' }`. El perfil nunca escribe el nivel, sonido o desbloqueo por su cuenta.
+Código propio e instrucciones: [MIT](LICENSE), sin tarifa de licencia de este código. Integración, alojamiento y mantenimiento pueden costar. El origen de juice no declara licencia en el commit fijado: no asumas permiso de redistribución. Firma, marca y Moki **no son MIT**, ni una licencia de assets; ver [NOTICES](NOTICES) y [aviso de medios](docs/ASSET-NOTICE.md). `vendor/` y los WEBP originales no se versionan.
 
-Orden de scripts, API, opciones y rollback en [Integración](docs/integration.md). También: [Arquitectura](docs/architecture.md), [Principios](docs/design-principles.md), [Licencia y privacidad](docs/privacy-license.md).
+El adaptador no envía telemetría ni lee cookies. juice conserva nivel, sonido y logro en `localStorage`; Moki también conserva hallazgos diarios y racha. Se borran al limpiar datos del sitio. La descarga de dependencias sí contacta sus fuentes; cualquier analítica añadida por tu sitio requiere su propia política. Detalles en [privacidad](docs/privacy-license.md).
 
-## Verificación y límites
+Ayuda: abre un [issue](https://github.com/jorgefsb/papacito-juice/issues) con versión, navegador, pasos y error sin datos privados. No hay SLA ni compatibilidad universal prometida. Pruebas de navegador en móvil emulado no sustituyen pruebas en equipos físicos.
 
-Los resultados reales viven en [reports/browser-report.json](reports/browser-report.json) y [reports/media-report.json](reports/media-report.json). La suite cubre niveles, controles, desmontaje, móvil emulado, reduced motion y preferencias. Las capturas de QA quedan en `qa/`, ignorado por Git.
+## Guías y evidencia
 
-En SwiftShader el motor puede reducir calidad o pausarse si supera su presupuesto; ese límite sigue activo. La estela vieja de Hardcore se oculta mediante CSS, pero juice sigue creando sus nodos. El fluido se mezcla con `screen` y se aprecia mejor en fondo oscuro.
-
-## Licencia
-
-Código e instrucciones: [MIT](LICENSE). Moki, su arte y la marca personal **no son MIT**: no se concede permiso de reutilización. Las capturas y el video muestran la integración autorizada de la marca personal; no son un paquete de assets. Los WEBP de Moki no se incluyen en este repositorio. Las dependencias descargadas permanecen en `vendor/`, ignorado por Git. Ver [NOTICES](NOTICES).
+- [Integración y rollback](docs/integration.md)
+- [Arquitectura](docs/architecture.md)
+- [Principios](docs/design-principles.md)
+- [Privacidad y licencias](docs/privacy-license.md)
+- [Propuestas y pendientes](docs/roadmap.md)
+- [Guía portable para agentes](docs/REPOSITORY-DOCUMENTATION.md)
+- [Browser report](reports/browser-report.json) · [Media report](reports/media-report.json) · [Documentation verification](reports/docs-brandkit-verification.json)

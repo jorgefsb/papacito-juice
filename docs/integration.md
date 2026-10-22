@@ -1,5 +1,7 @@
 # Integración
 
+[Español](integration.md) · [English](integration.en.md)
+
 Pasos para una página de la marca personal. La demo [../examples/index.html](../examples/index.html) los sigue.
 
 ## 1. Archivos al mismo origen

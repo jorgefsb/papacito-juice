@@ -1,5 +1,7 @@
 # Roadmap
 
+[Español](roadmap.md) · [English](roadmap.en.md)
+
 La versión estable tiene cuatro niveles: Nada, Poquito, Mucho y Hardcore. Lo de abajo es una propuesta. No está implementado y no es un quinto nivel en esta versión.
 
 ## Propuesta: «Legendario»
@@ -25,3 +27,7 @@ La versión estable tiene cuatro niveles: Nada, Poquito, Mucho y Hardcore. Lo de
 
 - Un interruptor documentado en juice para apagar la estela vieja de Hardcore en vez de ocultarla con CSS.
 - Publicar los releases de Game Feel 1.0.1 y Cursor líquido 1.0.1 para que `npm run setup` no necesite rutas locales.
+
+## Estado de esta revisión documental
+
+La lista anterior conserva pendientes del punto de partida; no verifica disponibilidad actual de releases remotos. Esta revisión no publica nada. Si una descarga falla, usa las rutas locales verificadas de la guía de integración sin cambiar pins.

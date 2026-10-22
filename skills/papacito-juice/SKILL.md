@@ -9,6 +9,8 @@ author_note: "Instructions only. No license to Moki artwork or to the personal b
 
 # Papacito Juice
 
+[Español](SKILL.es.md) · [English](SKILL.md)
+
 The personal-brand profile of Game Feel. Read the sibling Game Feel skill first: principles, layers, levels, ethical loops and QA live there. This file adds what is specific to Jorge Suárez's personal brand. If they conflict, this profile wins for the personal brand.
 
 Related, separate repositories (intended public homes, check they exist before linking them):
@@ -38,7 +40,7 @@ If two sources conflict, the higher one wins. Record the conflict instead of res
 
 ## 4. Brand in two lines
 
-- Colour: background #0A0A0A, surface #161616, single accent #FF6B35, amber #FFA500. Text on dark #FFFFFF, secondary #B7B3AD, border #8A7E70. Paper #F4E8D5, kraft #B99168, ink #22211F. Text on orange is ink. Paper is never a text colour. No neon, no glow. One accent per screen.
+- Colour: background #0A0A0A, surface #161616, single accent #FF6B35, amber #FFA500. Text on dark #FFFFFF, secondary #B7B3AD, border #8A7E70. Ink #22211F. Paper and kraft remain proposals, not approved tokens for new UI. Text on orange is ink. Paper is never a text colour. No neon, no glow. One accent per screen.
 - Type: Outfit 700 for headings, Inter 400 for body, through `--brand-font-heading` and `--brand-font-body`. Radii 6 controls, 12 cards, 18 panels, 999 pills.
 
 ## 5. Always Moki
@@ -72,8 +74,8 @@ On by default (`data-jz-sound="on"`) with a visible mute toggle. A muted choice 
 1. Copy `juice/1.2.0/` byte for byte (core, menu, `hardcore/`, `moki/` with its WebP files and `manifest.json`) to the site's own origin. No CDN. Verify every sha256 in the repo and once served.
 2. Add Cursor líquido 1.0.1 dist and the Game Feel 1.0.1 adapter, unchanged and hash-checked.
 3. `<html lang="es" data-jz-sound="on" data-moki-show="5">`, plus `data-jz-default="full"` on the home page.
-4. Head order: brand tokens, site CSS, `juice.css`, `juice-menu.css`, `hardcore.css`, `moki.css`, cursor CSS, adapter CSS. Scripts at the end with `defer` in the same order, then the profile and the site script.
-5. `await PapacitoJuice.mount({ page: 'home' | 'page' })`. If it rejects, the install is incomplete. Fix it, do not hide the error.
+4. Head order: brand tokens, site CSS, `juice.css`, `juice-menu.css`, `hardcore.css`, `moki.css`, cursor CSS, adapter CSS. Scripts at the end with `defer` in the same order, then the profile and the site script. Exact profile CSS order: [integration](../../docs/integration.en.md).
+5. `await PapacitoJuice.mount({ page: 'home' })` or `{ page: 'page' }`. If it rejects, the install is incomplete. Fix it, do not hide the error.
 6. Never edit a published version. Fixes ship as a new version.
 
 ## 9. Page rules

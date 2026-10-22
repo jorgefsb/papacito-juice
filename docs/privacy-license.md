@@ -1,5 +1,7 @@
 # Privacidad y licencias
 
+[Español](privacy-license.md) · [English](privacy-license.en.md)
+
 ## Datos
 
 `papacito-juice.js` no guarda nada, no lee cookies, no manda telemetría y solo pide al mismo origen las imágenes de Moki para comprobar que existen.
@@ -29,3 +31,5 @@ Nada sale del navegador. Se borra al limpiar los datos del sitio. La racha solo 
 ## Marca personal
 
 Este perfil sirve para que las páginas de la marca personal se vean y se sientan como tales. No es una licencia para usar el nombre, la imagen o la voz de Jorge Suárez, ni para usar a Moki en otra marca, ni para crear poses nuevas. Ningún archivo de este repo otorga derechos nuevos sobre Moki. Una demo pública solo puede mostrar el arte de Moki si su licencia lo permite, por eso `vendor/` no se publica.
+
+Medios de documentación: [aviso de arte y marca](ASSET-NOTICE.md).
