@@ -1,0 +1,527 @@
+{
+  "status": "PASS",
+  "baseline": "f05e03427235cd7d5ba52dd3b2af05abb06a2f4b",
+  "tested_starting_head": "f05e03427235cd7d5ba52dd3b2af05abb06a2f4b",
+  "branch": "docs/brandkit-es-en-20261022",
+  "local_only": true,
+  "scope": "Documentation, bilingual instructions, editorial covers/captions and real test reports. No push, tags, release, deploy or GBrain operation.",
+  "unit": {
+    "command": "npm test",
+    "exit_code": 0,
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "log": "qa/docs/unit.log"
+  },
+  "verify": [
+    {
+      "command": "npm run verify",
+      "exit_code": 0,
+      "output": "> papacito-juice@1.0.1 verify\n> node scripts/setup-demo.mjs --verify-only\n\nvendor/ verified: 20 juice files + manifest (Moki included), Game Feel adapter 1.0.1, cursor release https://github.com/jorgefsb/cursor-liquido/releases/download/v1.0.1/, golden engine 3d478cc83696"
+    }
+  ],
+  "browser": {
+    "command": "npm run test:browser",
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "report": "reports/browser-report.json",
+    "renderer": "Chromium headless with SwiftShader WebGL. Emulated viewports, not physical devices."
+  },
+  "readme": {
+    "six_basic_questions": {
+      "es": 6,
+      "en": 6
+    },
+    "first_human_action_before_developer_setup": true,
+    "inline_code_token_parity": true,
+    "parity_review": "Equivalent six answers, requirements, setup commands, costs/licensing, status, privacy, limitations and support; UI stays Spanish with explanatory ES/EN companions."
+  },
+  "current_guide_pairs": [
+    [
+      "README.md",
+      "README.en.md"
+    ],
+    [
+      "docs/integration.md",
+      "docs/integration.en.md"
+    ],
+    [
+      "docs/architecture.md",
+      "docs/architecture.en.md"
+    ],
+    [
+      "docs/design-principles.md",
+      "docs/design-principles.en.md"
+    ],
+    [
+      "docs/privacy-license.md",
+      "docs/privacy-license.en.md"
+    ],
+    [
+      "docs/roadmap.md",
+      "docs/roadmap.en.md"
+    ],
+    [
+      "docs/REPOSITORY-DOCUMENTATION.md",
+      "docs/REPOSITORY-DOCUMENTATION.en.md"
+    ],
+    [
+      "docs/media/README.md",
+      "docs/media/README.en.md"
+    ],
+    [
+      "skills/papacito-juice/SKILL.es.md",
+      "skills/papacito-juice/SKILL.md"
+    ]
+  ],
+  "links": {
+    "checked": 119,
+    "missing": 0,
+    "broken_markdown_anchors": 0
+  },
+  "official_assets": [
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/styles.css",
+      "sha256": "5b2423f1a4fe17e630083e83a9b1d3c1df62ca50d19815ae396c1a17f0e690d2",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/brand-kit-0.3/tokens.json",
+      "sha256": "2581a3ef74deb1c95c770a0f4ccb5baf145b9477cd6b24de086f503a973b5a87",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/brand-kit-0.3/tokens.css",
+      "sha256": "8d8f3a345d359a99dd48b98289b9a7d39e2be06179322949ff2e217395ef3152",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/masters-1.0/signature/JorgeSuarez-A-oscuro-bicolor.svg",
+      "sha256": "52443c3b04c03265eaa6a9732020eb1ab6aaa8be23e37d422567fe4166c47b37",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/masters-1.0/signature/JorgeSuarez-C-oscuro-monocromo.svg",
+      "sha256": "f6c7435cdc185e066ad5007f5df3ccfb92981e1ebc40160705a1c1379f882f01",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/masters-1.0/signature/png/JorgeSuarez-A-oscuro-bicolor-screen-240px-visible.png",
+      "sha256": "560b2a153bb385c17da353de3b4224ac4bb15a4ba8c2fda88c99ad357fa18763",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/moki-parche-derecho.png",
+      "sha256": "4980c46331c1fef308ab9505c7cf311466584af16adc741e7f8717e8dcf2e171",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/juice/1.2.0/moki/moki-verifica.webp",
+      "sha256": "09f06fa76797e44399112caf0ea41e201869694638da7decf95f3bb49ab3e903",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/Outfit-OFL.txt",
+      "sha256": "c676351bf8576b9aba743cd5eaa8c0e7ee0d51f805d720447b4df4ddb6a2e416",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/Inter-OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/Outfit-static.ttf",
+      "sha256": "cad43a79db1b8204a28d8a161d90c938ed80971affbf6768e357f090c7a2ed02",
+      "manifest_hash_verified": true
+    },
+    {
+      "source": "https://brandkit.jorgesuarez.com.mx/assets/Inter-static.ttf",
+      "sha256": "6bd75f77a5941117f794cdb9cf4ee983acf45f2e96be56e74db55029454a988c",
+      "manifest_hash_verified": true
+    }
+  ],
+  "images": [
+    {
+      "path": "docs/media/cover.es.png",
+      "width": 1600,
+      "height": 840,
+      "sha256": "c13e9e11c286d208ca3fb0240ce4351d04e244c4af4e89207c76a416d2a8f57a"
+    },
+    {
+      "path": "docs/media/mucho.png",
+      "width": 1280,
+      "height": 900,
+      "sha256": "27b9cd9a5396f9f47c7491488ac43372b4afc9a38e76246eecb69da5c0e6741c"
+    },
+    {
+      "path": "docs/media/poquito.png",
+      "width": 1280,
+      "height": 900,
+      "sha256": "27f48ba6e2d3b4ea47625077db4f306f6d9a73828d8925845bec8a2396e54fdc"
+    },
+    {
+      "path": "docs/media/moki.png",
+      "width": 1280,
+      "height": 900,
+      "sha256": "2a0c6eb7ed7583da57decc36a0424b480bcf2119048fc88b8e7106aca7a9e9f8"
+    },
+    {
+      "path": "docs/media/cover.es.mobile.png",
+      "width": 900,
+      "height": 1100,
+      "sha256": "af73c062ba7b2538ce98b4587713bcac363836d9e64d9defb59deaafa621474f"
+    },
+    {
+      "path": "docs/media/cover.en.mobile.png",
+      "width": 900,
+      "height": 1100,
+      "sha256": "f7cbf2bce8663e1da6c1869969a1968a3c38bd1745dd8093b8bd0c5f17dd548a"
+    },
+    {
+      "path": "docs/media/cover.en.png",
+      "width": 1600,
+      "height": 840,
+      "sha256": "6741610cab3e1b63022201e2170dae557ec3f6f6b7050ab3025a3d41cd08faad"
+    },
+    {
+      "path": "docs/media/hardcore.png",
+      "width": 1280,
+      "height": 900,
+      "sha256": "a20823d403738c6c576a1a84dd2a81cad87b2fbef0d560e4e13db0438ebdbc10"
+    }
+  ],
+  "video": {
+    "path": "docs/media/demo.mp4",
+    "codec": "h264",
+    "width": 1280,
+    "height": 900,
+    "duration_seconds": 18.44,
+    "fps": "25/1",
+    "audio_streams": 0,
+    "sha256": "414ca0c016c676fc2d2104b3c2de87e407891213da589d220a6cf753ff015635",
+    "captions": [
+      "docs/media/demo.es.vtt",
+      "docs/media/demo.en.vtt"
+    ],
+    "description": "Editorial descriptive captions timed against inspected real frames; no spoken narration was recorded."
+  },
+  "markdown_browser_preview": {
+    "chromium": "156.0.8078.4",
+    "results": [
+      {
+        "page": "README.es",
+        "viewport": 1280,
+        "width": 1280,
+        "scrollWidth": 1280,
+        "h2": [
+          "¿Qué es?",
+          "¿Para quién es?",
+          "¿Por qué existe?",
+          "¿Cómo lo uso?",
+          "¿Cuándo conviene y cuándo no?",
+          "¿Dónde lo pruebo o descargo?",
+          "Lo que muestra la demo",
+          "Equipo técnico: ejecutar e integrar",
+          "Estado, costos, privacidad y ayuda",
+          "Guías y evidencia"
+        ],
+        "images": [
+          {
+            "src": "docs/media/cover.es.png",
+            "loaded": true
+          },
+          {
+            "src": "docs/media/demo.gif",
+            "loaded": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "page": "README.es",
+        "viewport": 375,
+        "width": 375,
+        "scrollWidth": 375,
+        "h2": [
+          "¿Qué es?",
+          "¿Para quién es?",
+          "¿Por qué existe?",
+          "¿Cómo lo uso?",
+          "¿Cuándo conviene y cuándo no?",
+          "¿Dónde lo pruebo o descargo?",
+          "Lo que muestra la demo",
+          "Equipo técnico: ejecutar e integrar",
+          "Estado, costos, privacidad y ayuda",
+          "Guías y evidencia"
+        ],
+        "images": [
+          {
+            "src": "docs/media/cover.es.png",
+            "loaded": true
+          },
+          {
+            "src": "docs/media/demo.gif",
+            "loaded": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "page": "README.en",
+        "viewport": 1280,
+        "width": 1280,
+        "scrollWidth": 1280,
+        "h2": [
+          "What is it?",
+          "Who is it for?",
+          "Why was it made?",
+          "How do I use it?",
+          "When should or shouldn’t I use it?",
+          "Where can I try or download it?",
+          "What the demo shows",
+          "Technical team: run and integrate",
+          "Status, costs, privacy and help",
+          "Guides and evidence"
+        ],
+        "images": [
+          {
+            "src": "docs/media/cover.en.png",
+            "loaded": true
+          },
+          {
+            "src": "docs/media/demo.gif",
+            "loaded": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "page": "README.en",
+        "viewport": 375,
+        "width": 375,
+        "scrollWidth": 375,
+        "h2": [
+          "What is it?",
+          "Who is it for?",
+          "Why was it made?",
+          "How do I use it?",
+          "When should or shouldn’t I use it?",
+          "Where can I try or download it?",
+          "What the demo shows",
+          "Technical team: run and integrate",
+          "Status, costs, privacy and help",
+          "Guides and evidence"
+        ],
+        "images": [
+          {
+            "src": "docs/media/cover.en.png",
+            "loaded": true
+          },
+          {
+            "src": "docs/media/demo.gif",
+            "loaded": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "page": "caption-player",
+        "duration": 18.44,
+        "tracks": [
+          {
+            "language": "es",
+            "cues": 4,
+            "lastEnd": 18.44
+          },
+          {
+            "language": "en",
+            "cues": 4,
+            "lastEnd": 18.44
+          }
+        ]
+      }
+    ]
+  },
+  "visual_review": {
+    "inspected": [
+      "qa/docs/readme-review.png",
+      "qa/docs/mobile-cover-es-375.png",
+      "qa/docs/player-375.png"
+    ],
+    "result": "Family signature/title/benefit/demo layout, readable mobile variant, native page actions and real Moki for personal profile only. Desktop cover shrinks on GitHub mobile; separate mobile-cover link is provided."
+  },
+  "protected_tracked_files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "319de25d74177df89ec28c07bd92d22e49138a7244df4c45fe8d657b0312e9bb",
+      "matches_baseline": true
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "6ec08b3a65256b8ec6dbc4ed83c417015dd3d1dc141f48e0434c76da583180c1",
+      "matches_baseline": true
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f4864217781bc66ed142a648e070f2e83e94d74d4e1079ef22c3ff7fa4c654aa",
+      "matches_baseline": true
+    },
+    {
+      "path": "NOTICES",
+      "sha256": "2218d4d4a2ad8b1fb7b83ede5699b8e6a8146c83f56927bf4e802f5bf4b38568",
+      "matches_baseline": true
+    },
+    {
+      "path": "examples/demo.js",
+      "sha256": "29b04aa51a5d2e3d21287b418f4943510d060e06193afeb2b7a3d5bd9429e351",
+      "matches_baseline": true
+    },
+    {
+      "path": "examples/index.html",
+      "sha256": "ae28c39f364adbb9fed5dc9bf40d2ed73ec46a1234797579a6a7dcdc9e7804b9",
+      "matches_baseline": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "d344630e9d6fd7008bdc1bb0dba1bf6a3f539388d5b8059c889e3075b0b93f06",
+      "matches_baseline": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "49e2cdfb1f61c26d472170205465faee1d0361d3d8e8ad3fc162e6d11726a7f9",
+      "matches_baseline": true
+    },
+    {
+      "path": "scripts/capture-demo.mjs",
+      "sha256": "ae4e10cbe434d1dc81d72061a5a75f3d6dc1509631b3d7b48d84222a56264e7e",
+      "matches_baseline": true
+    },
+    {
+      "path": "scripts/serve.mjs",
+      "sha256": "49cf57ffdb8fe7d969dbc0073065f86a4b816ba60e017e3b880ee7befd9230fa",
+      "matches_baseline": true
+    },
+    {
+      "path": "scripts/setup-demo.mjs",
+      "sha256": "cbf1a91bbe8b04e5b6a613b43d6e4bb2f6af12a8073de24b43d810953e6695bf",
+      "matches_baseline": true
+    },
+    {
+      "path": "src/papacito-juice.css",
+      "sha256": "f8588c731f5b13295c8c0aa4db7bd8c6e263abbb05112284549d7deb42ed913d",
+      "matches_baseline": true
+    },
+    {
+      "path": "src/papacito-juice.js",
+      "sha256": "2f3705c79a8d156fffaacca1a40480717b9f12e471c8867bcd990213b034680f",
+      "matches_baseline": true
+    },
+    {
+      "path": "tests/browser/harness.mjs",
+      "sha256": "9914951b4f2a11f7153f542e511cfeab2d83e9824474dc799f43ef05b844f8da",
+      "matches_baseline": true
+    },
+    {
+      "path": "tests/browser/run.mjs",
+      "sha256": "49adad913de57ab414dbb2da0845878133a273f60c8b16962e68f75ea92194b8",
+      "matches_baseline": true
+    },
+    {
+      "path": "tests/unit/profile.test.mjs",
+      "sha256": "ccb95369e3f82c68585de5050430adc65973d8d77140aa9029456b5dda312d85",
+      "matches_baseline": true
+    },
+    {
+      "path": "tests/unit/repo.test.mjs",
+      "sha256": "1f35c65bb26877972f2937afb7b0bca9ed28832221b68ae64beea6a62ef4adaf",
+      "matches_baseline": true
+    },
+    {
+      "path": "tests/unit/setup.test.mjs",
+      "sha256": "e413c109a1eec191b8dfde8a301f2f6384669436762436ba0964a06bda218ccb",
+      "matches_baseline": true
+    }
+  ],
+  "vendor": {
+    "files_compared": 26,
+    "sha256_before_and_after_equal": true,
+    "sha256": {
+      "vendor/setup-report.json": "150b6d1322ed732f2a67bdbdd13ef38d96a7d4b92c6df5000571dae3f9f9cf84",
+      "vendor/cursor-liquido/cursor-liquido.js": "d1ce69c56780c1a0ed23499e4cd4db3e00f797c0dddab7f54b341b7dbe5802f8",
+      "vendor/cursor-liquido/cursor-liquido.css": "48ea2645dd676a870fda373edb4b418707814040032ba38655ab20888d4283b3",
+      "vendor/game-feel/game-feel-cursor.css": "da9ec736ac75246b76881a23e00f7b48cbd87ed5b429ea91bd2f490b5fd44d9d",
+      "vendor/game-feel/game-feel-cursor.js": "a6ff2126157a75102a2bb3c5babc8d9ab818ab8e603cf8d76727fe68148adb3b",
+      "vendor/juice/1.2.0/juice-menu.css": "1e6d00d4e95c2b6640fd5eb9470552c75eea2744698b8267287c1b80a79edabc",
+      "vendor/juice/1.2.0/juice.css": "2d02b3e2d968cd5afe9b6174979255b97aa7ad8793c682273a85976f06058981",
+      "vendor/juice/1.2.0/juice-menu.js": "00f0edeb1246003927b1ce8c8ecdc75bfccee46d753a6caac0cf71aa6333b596",
+      "vendor/juice/1.2.0/manifest.json": "a4da3499b6e171221a11477c839e08fadbbc846fc687266c5007bace6a2c6568",
+      "vendor/juice/1.2.0/juice.js": "79ef95b5ee106fcc477f2f79c13bce8dae82401a28a91f328e53f152ac4d9995",
+      "vendor/juice/1.2.0/hardcore/hardcore.js": "b4671dfaf0b5853d4f5c950c66cc8920da245c95c7b836ec682af15b1c70dd70",
+      "vendor/juice/1.2.0/hardcore/hardcore.css": "0c727d475e66651f12c5d5a618e1fed365ae1a78195a82f2ca56a07e18f01bcb",
+      "vendor/juice/1.2.0/moki/moki-saluda.webp": "8d1f8624634a9f89a52df3edb910ec073e90fa5a5c6263f241b8dca93ea4dfa0",
+      "vendor/juice/1.2.0/moki/moki-frente.webp": "8de9419f11168bfaf619c81951257e93793ca92b2b960f234b3a5868e699bb15",
+      "vendor/juice/1.2.0/moki/moki-espalda.webp": "fd927e2b4a0c65945271679da92a36a81790a94f96e5e03ac8428a2df56446d1",
+      "vendor/juice/1.2.0/moki/moki.css": "cf3d67c72dbba1b009d6b78bfc997b5c4f0d85857fb5da1d83a339bac7a68cd2",
+      "vendor/juice/1.2.0/moki/moki-jugando.webp": "7f3017a91af7b89bd3818eba8f9c0ea799b81d081c8c6c1a2e1471ad36040a7c",
+      "vendor/juice/1.2.0/moki/moki-parado.webp": "5e1249af0e16d1f5bebc0de1c71a9048a722db626eb2b859aca7643bb4086ad6",
+      "vendor/juice/1.2.0/moki/moki-verifica.webp": "09f06fa76797e44399112caf0ea41e201869694638da7decf95f3bb49ab3e903",
+      "vendor/juice/1.2.0/moki/moki-lado.webp": "0917c50e6d02c2666443b91598c4ffb698790ed5cab53f34cbb92eb9532fc376",
+      "vendor/juice/1.2.0/moki/moki-tres-cuartos.webp": "35e671758b36e8219287a04ed6ad6ca1eae26d7da980be8b48a71a3a705580d6",
+      "vendor/juice/1.2.0/moki/moki-compu.webp": "c0fce7567b56c6b93fd3739bcbf98dfc23b32be0abd8cfe717279a3a503a21ed",
+      "vendor/juice/1.2.0/moki/moki-asoma.webp": "120bab003c3c676429d88c765dc151a141456845bf22a0674b5c8daf6104f6c0",
+      "vendor/juice/1.2.0/moki/moki.js": "1d0ab98882934e7a16db6ac27026375664a2415bd2b362f30b263c5ef8ef7b96",
+      "vendor/juice/1.2.0/moki/moki-parche.webp": "593d96de0c148d0aeaaaa1323193a7c3fbd9e5b96fb072c3d4be6918044e2a9f",
+      "vendor/juice/1.2.0/moki/moki-bandera.webp": "b3f88a40d4b42232b19febee34e88228ea620dbbfce5a188d5efe5d92e40517a"
+    }
+  },
+  "original_media_byte_identical": [
+    {
+      "path": "docs/media/demo.gif",
+      "sha256": "e836bfd0bda8eb1bd2633212138955c0341fd240c684d63e4e84e9cd0de78b6f",
+      "matches_baseline": true
+    },
+    {
+      "path": "docs/media/demo.mp4",
+      "sha256": "414ca0c016c676fc2d2104b3c2de87e407891213da589d220a6cf753ff015635",
+      "matches_baseline": true
+    },
+    {
+      "path": "docs/media/hardcore.png",
+      "sha256": "a20823d403738c6c576a1a84dd2a81cad87b2fbef0d560e4e13db0438ebdbc10",
+      "matches_baseline": true
+    },
+    {
+      "path": "docs/media/moki.png",
+      "sha256": "2a0c6eb7ed7583da57decc36a0424b480bcf2119048fc88b8e7106aca7a9e9f8",
+      "matches_baseline": true
+    },
+    {
+      "path": "docs/media/mucho.png",
+      "sha256": "27b9cd9a5396f9f47c7491488ac43372b4afc9a38e76246eecb69da5c0e6741c",
+      "matches_baseline": true
+    },
+    {
+      "path": "docs/media/poquito.png",
+      "sha256": "27f48ba6e2d3b4ea47625077db4f306f6d9a73828d8925845bec8a2396e54fdc",
+      "matches_baseline": true
+    }
+  ],
+  "runtime_versions_unchanged": true,
+  "runtime_tests_pins_vendor_examples_unchanged": true,
+  "limitations": [
+    "SwiftShader and mobile emulation are not physical-device or universal GPU benchmarks.",
+    "Remote release/hosted demo availability not verified; no publication performed.",
+    "Brand/Moki are not MIT; juice upstream has no declared license at the pinned commit."
+  ],
+  "issues_resolved": [
+    "Intermediate unit run caught unfinished English-guide/report links and a long dash in the new player. Documentation corrected; tests and assertions unchanged."
+  ],
+  "qa_reproduction": [
+    "npm run verify",
+    "npm test",
+    "npm run test:browser",
+    "Faithful previews use Python Markdown tables/fenced_code/toc and a temporary same-origin server, then pinned Playwright at 1280 and 375 px. Both VTT tracks loaded, four cues each; real MP4 playback sought to six seconds. All temporary servers stopped."
+  ]
+}

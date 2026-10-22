@@ -1,5 +1,7 @@
 # Principios del perfil
 
+[Español](design-principles.md) · [English](design-principles.en.md)
+
 Los principios generales (disparador más respuesta, proporción, capas, niveles, sonido con consentimiento, loops éticos, QA) son los de Game Feel: https://github.com/jorgefsb/game-feel/blob/main/docs/design-principles.md. Aquí va solo lo propio de la marca personal. Si chocan, este perfil manda para la marca personal.
 
 ## Alcance
@@ -14,7 +16,7 @@ Se alinea el formato, no lo que se dice. Textos, cifras, secciones, enlaces, CTA
 
 ## Marca en dos líneas
 
-- **Color:** fondo `#0A0A0A`, superficie `#161616`, acento único `#FF6B35`, ámbar `#FFA500`. Texto sobre oscuro `#FFFFFF`, secundario `#B7B3AD`, borde `#8A7E70`. Papel `#F4E8D5`, kraft `#B99168`, tinta `#22211F`. Sobre naranja el texto va en tinta. El papel nunca es color de texto. Sin neón ni glow. Un acento por pantalla.
+- **Color:** fondo `#0A0A0A`, superficie `#161616`, acento único `#FF6B35`, ámbar `#FFA500`. Texto sobre oscuro `#FFFFFF`, secundario `#B7B3AD`, borde `#8A7E70`. Tinta `#22211F`. Papel y kraft siguen como propuestas del kit, no como tokens aprobados para nueva UI. Sobre naranja el texto va en tinta. El papel nunca es color de texto. Sin neón ni glow. Un acento por pantalla.
 - **Tipografía:** Outfit 700 en títulos e Inter 400 en cuerpo, por `--brand-font-heading` y `--brand-font-body`. Radios: 6 controles, 12 tarjetas, 18 paneles.
 
 Fuente de verdad: el brandkit público de la marca (https://brandkit.jorgesuarez.com.mx). Si algo aquí no coincide, gana el brandkit.
@@ -22,7 +24,7 @@ Fuente de verdad: el brandkit público de la marca (https://brandkit.jorgesuarez
 ## Respuestas
 
 - `jz-tap` en botones, éxito al terminar un formulario, error con shake, fiesta solo en momentos grandes (pago confirmado, todos los Mokis encontrados).
-- Partículas solo en `#FF6B35`, `#FFA500` y `#F4E8D5`, detrás del texto.
+- La integración existente usa partículas `#FF6B35`, `#FFA500` y `#F4E8D5`, detrás del texto. Este último es un valor existente del runtime; no aprueba papel como texto ni una nueva UI de papel.
 - Flash corto en el acento, sin resplandor. Solo `transform` y `opacity`. Sin loops permanentes.
 
 ## Sonido

@@ -1,5 +1,7 @@
 # Arquitectura
 
+[Español](architecture.md) · [English](architecture.en.md)
+
 Papacito Juice no tiene motor propio. Es una capa delgada que valida la página y monta el adapter genérico de Game Feel. Las razones del adapter (un solo dueño del puntero, por qué la estela vieja de Hardcore se oculta con CSS, idempotencia) están en la arquitectura de Game Feel: https://github.com/jorgefsb/game-feel/blob/main/docs/architecture.md.
 
 ## Capas
