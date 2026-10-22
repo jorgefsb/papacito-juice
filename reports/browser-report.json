@@ -1,6 +1,6 @@
 {
   "suite": "papacito-juice",
-  "started": "2026-10-22T05:22:14.105Z",
+  "started": "2026-10-22T05:28:06.113Z",
   "playwright": "1.64.1",
   "chromium": "156.0.8078.4",
   "renderer": "Chromium headless with SwiftShader WebGL. Emulated viewports, not physical devices.",
@@ -86,7 +86,7 @@
       "detail": {
         "found": 5,
         "intensity": "hardcore",
-        "oldTrailNodes": 3,
+        "oldTrailNodes": 4,
         "visibleOldTrail": 0,
         "celebrationParticles": 17
       }
@@ -179,7 +179,7 @@
         "off": 360,
         "subtle": 360,
         "full": 360,
-        "hard": 362
+        "hard": 361
       }
     }
   ]
