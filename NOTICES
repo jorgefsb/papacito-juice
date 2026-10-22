@@ -1,4 +1,4 @@
-NOTICES for Papacito Juice 1.0.0
+NOTICES for Papacito Juice 1.0.1
 
 Scope of the MIT license
   LICENSE covers only the code and written instructions in this repository:
@@ -22,12 +22,12 @@ Material that is downloaded, never committed
     License: at that commit the repository declares no license file. This
     repository does not redistribute juice and grants no right over it.
 
-  Game Feel 1.0.0 adapter (game-feel-cursor.js, game-feel-cursor.css)
-    Intended source: https://github.com/jorgefsb/game-feel (tag v1.0.0)
+  Game Feel 1.0.1 adapter (game-feel-cursor.js, game-feel-cursor.css)
+    Intended source: https://github.com/jorgefsb/game-feel (tag v1.0.1)
     License: MIT, (c) 2026 Jorge Suárez. Used unchanged, pinned by sha256.
 
-  Cursor líquido 1.0.0
-    Intended source: https://github.com/jorgefsb/cursor-liquido (release v1.0.0)
+  Cursor líquido 1.0.1
+    Intended source: https://github.com/jorgefsb/cursor-liquido (release v1.0.1)
     License: MIT, (c) 2026 Jorge Suárez. Its fluid display shading is adapted
     from WebGL Fluid Simulation, (c) 2017 Pavel Dobryakov, MIT. The renderer is
     used byte for byte (sha256

@@ -24,4 +24,4 @@ La versión estable tiene cuatro niveles: Nada, Poquito, Mucho y Hardcore. Lo de
 ## Pendientes conocidos
 
 - Un interruptor documentado en juice para apagar la estela vieja de Hardcore en vez de ocultarla con CSS.
-- Publicar los releases de Game Feel 1.0.0 y Cursor líquido 1.0.0 para que `npm run setup` no necesite rutas locales.
+- Publicar los releases de Game Feel 1.0.1 y Cursor líquido 1.0.1 para que `npm run setup` no necesite rutas locales.

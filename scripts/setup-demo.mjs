@@ -5,20 +5,10 @@
 //   node scripts/setup-demo.mjs [--juice-dir DIR] [--cursor-dir DIR] [--cursor-css FILE] [--game-feel-dir DIR]
 //   node scripts/setup-demo.mjs --verify-only
 //
-// Juice: all 20 files of juice 1.2.0, including Moki and its artwork. Default
-// source is the pinned upstream commit. --juice-dir (or JUICE_DIR) reads a
-// local copy of juice/1.2.0 instead. Moki artwork is not covered by this
-// repository's MIT license. Fetch it only for the authorized personal-brand
-// integration.
-// Game Feel adapter: --game-feel-dir (or GAME_FEEL_DIR) points to a checkout of
-// the game-feel repository. Without it, setup downloads the intended v1.0.0
-// tag. The files must match the pinned hashes, so the profile always runs the
-// same generic adapter.
-// Cursor líquido: --cursor-dir (or CURSOR_LIQUIDO_DIR) takes either a release
-// dist folder (cursor-liquido.js + cursor-liquido.css) or the approved source
-// inputs (renderer, adapter, wrapper, with CSS via --cursor-css or
-// CURSOR_LIQUIDO_CSS). Without it, setup downloads the intended v1.0.0
-// release assets. Either way the renderer bytes must match the golden hash.
+// Downloads juice 1.2.0 from the pinned upstream commit and stable Cursor
+// líquido 1.0.1 release assets. Local --cursor-dir accepts dist only, with its
+// stable manifest. No source recovery fallback. Every component is hash-pinned.
+// Moki artwork (Papacito Juice only) and the personal brand are not MIT.
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -60,27 +50,51 @@ export const JUICE = Object.freeze({
 });
 
 export const CURSOR = Object.freeze({
-  version: '1.0.0',
+  version: '1.0.1',
   repository: 'https://github.com/jorgefsb/cursor-liquido',
-  release: 'https://github.com/jorgefsb/cursor-liquido/releases/download/v1.0.0/',
+  release: 'https://github.com/jorgefsb/cursor-liquido/releases/download/v1.0.1/',
   goldenEngineSha256: '3d478cc836969c216812c7e479724e0e204bbb76a26df24c2414568883021230',
   engineHeader: '/* Fluid cursor v3. Original site module',
   engineBytes: 31176,
-  // Approved recovery inputs, accepted only byte for byte.
+  files: Object.freeze({
+    "cursor-liquido.js": "d1ce69c56780c1a0ed23499e4cd4db3e00f797c0dddab7f54b341b7dbe5802f8",
+    "cursor-liquido.css": "48ea2645dd676a870fda373edb4b418707814040032ba38655ab20888d4283b3"
+  }),
   sources: Object.freeze({
-    renderer: Object.freeze({ file: 'approved-fluid-v3.1.js', sha256: '3d478cc836969c216812c7e479724e0e204bbb76a26df24c2414568883021230' }),
-    adapter: Object.freeze({ file: 'approved-engine-adapter.js', sha256: '570bb84eea0856393c106d28a8cc01a18a269ffae31c453d30d88be72372ab2c' }),
-    wrapper: Object.freeze({ file: 'liquid-cursor-recovery.js', sha256: 'e4752f306a54c382f996a21cc7469b6dda570a408583b2d16e1d7f5b3e8c33d0' })
+    "renderer": {
+      "file": "approved-fluid-v3.1.js",
+      "sha256": "3d478cc836969c216812c7e479724e0e204bbb76a26df24c2414568883021230",
+      "bytes": 31176,
+      "offset": 437
+    },
+    "adapter": {
+      "file": "approved-engine-adapter.js",
+      "sha256": "570bb84eea0856393c106d28a8cc01a18a269ffae31c453d30d88be72372ab2c",
+      "bytes": 663,
+      "offset": 31613
+    },
+    "guard": {
+      "file": "quality-input-guard.js",
+      "sha256": "baeb7ce87fe8d62801331af5b7452657594a3cf40b82cd9255c945fa97e33561",
+      "bytes": 824,
+      "offset": 32276
+    },
+    "wrapper": {
+      "file": "liquid-cursor.js",
+      "sha256": "1ad9cdba9e10be125e4a102aa14b969aedf0b0d7e572386255a9271264bea8d0",
+      "bytes": 9566,
+      "offset": 33100
+    }
   })
 });
 
 export const GAME_FEEL = Object.freeze({
-  version: '1.0.0',
+  version: '1.0.1',
   repository: 'https://github.com/jorgefsb/game-feel',
-  base: 'https://raw.githubusercontent.com/jorgefsb/game-feel/v1.0.0/src/',
+  base: 'https://raw.githubusercontent.com/jorgefsb/game-feel/v1.0.1/src/',
   files: Object.freeze({
-    'game-feel-cursor.js': '8498ccadcd8ec2d15b9ae14298b0ce26de43a15293fc5daa932e2b4f1a83f4f6',
-    'game-feel-cursor.css': 'f523415013433dbef415483a1e68258a9833b42edcccea1d2f8bae3ba4837114'
+    'game-feel-cursor.js': 'a6ff2126157a75102a2bb3c5babc8d9ab818ab8e603cf8d76727fe68148adb3b',
+    'game-feel-cursor.css': 'da9ec736ac75246b76881a23e00f7b48cbd87ed5b429ea91bd2f490b5fd44d9d'
   })
 });
 
@@ -98,10 +112,13 @@ export function checkCursorBundle(bundle) {
   if (found !== CURSOR.goldenEngineSha256) {
     throw new Error('cursor-liquido.js does not contain the approved renderer (found ' + found + ', expected ' + CURSOR.goldenEngineSha256 + ')');
   }
-  const text = bundle.toString('utf8');
-  for (const marker of ['root.FluidEngine=ApprovedEngineAdapter', 'root.LiquidCursor = LiquidCursor']) {
-    if (!text.includes(marker)) throw new Error('cursor-liquido.js is missing ' + marker);
+  // Pin every executable component as well as the complete stable bundle.
+  for (const [name, spec] of Object.entries(CURSOR.sources)) {
+    const at = spec.offset;
+    if (at < 0) throw new Error('cursor bundle missing ' + name);
+    expectHash('cursor component ' + name, bundle.subarray(at, at + spec.bytes), spec.sha256);
   }
+  expectHash('cursor stable 1.0.1 bundle', bundle, CURSOR.files['cursor-liquido.js']);
 }
 
 function args(argv) {
@@ -163,7 +180,7 @@ async function cursorFiles(dir, cssFile) {
     try {
       [js, css, manifest] = await Promise.all(['cursor-liquido.js', 'cursor-liquido.css', 'manifest.json'].map(n => download(CURSOR.release + n)));
     } catch (error) {
-      throw new Error('Cursor líquido v1.0.0 release assets are not reachable (' + error.message + '). Pass --cursor-dir with a local release dist folder.');
+      throw new Error('Cursor líquido v1.0.1 release assets are not reachable (' + error.message + '). Pass --cursor-dir with a local release dist folder.');
     }
     return { js, css, origin: 'release ' + CURSOR.release, manifest: JSON.parse(manifest) };
   }
@@ -173,26 +190,20 @@ async function cursorFiles(dir, cssFile) {
     const manifestPath = join(dir, 'manifest.json');
     return { js, css, origin: 'local release dist', manifest: existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath)) : null };
   }
-  // Approved source inputs: bundle them in the release load order.
-  const parts = Object.values(CURSOR.sources).map(({ file, sha256: pinned }) => {
-    const buf = readFileSync(join(dir, file));
-    expectHash('cursor ' + file, buf, pinned);
-    return buf;
-  });
-  if (!cssFile) throw new Error('approved source inputs carry no CSS; pass --cursor-css with liquid-cursor.css');
-  const banner = Buffer.from('/*! Cursor líquido, approved inputs bundled locally for tests. MIT (c) 2026 Jorge Suárez; fluid shading adapted from Pavel Dobryakov (2017), MIT.\n * golden_engine_sha256 ' + CURSOR.goldenEngineSha256 + ' */\n');
-  return { js: Buffer.concat([banner, ...parts]), css: readFileSync(cssFile), origin: 'approved source inputs', manifest: null };
+  throw new Error('Cursor requires the verified stable 1.0.1 dist folder and manifest; source fallback is not supported.');
 }
 
-// When a release manifest is available, its hashes must agree as well.
+// The stable release manifest is mandatory; it cannot override the pins.
 function checkAgainstManifest(cursor) {
-  if (!cursor.manifest) return;
+  if (!cursor.manifest || cursor.manifest.version !== CURSOR.version || cursor.manifest.release_status !== 'stable') throw new Error('cursor manifest must declare stable ' + CURSOR.version);
+  if (cursor.manifest.golden_adapter_sha256 !== CURSOR.sources.adapter.sha256) throw new Error('cursor manifest adapter differs');
   const files = cursor.manifest.files || {};
   if (cursor.manifest.golden_engine_sha256 !== CURSOR.goldenEngineSha256) throw new Error('cursor manifest golden_engine_sha256 differs');
   for (const [name, buf] of [['cursor-liquido.js', cursor.js], ['cursor-liquido.css', cursor.css]]) {
     const entry = files['dist/' + name] || files[name];
     if (!entry) throw new Error('cursor manifest lists no ' + name);
-    expectHash('cursor ' + name, buf, entry.sha256);
+    expectHash('cursor ' + name, buf, CURSOR.files[name]);
+    expectHash('cursor manifest ' + name, buf, entry.sha256);
   }
 }
 
@@ -211,8 +222,8 @@ export function verifyVendor() {
   for (const [name, pinned] of Object.entries(GAME_FEEL.files)) expectHash('vendor game-feel ' + name, readFileSync(join(VENDOR, 'game-feel', name)), pinned);
   const js = readFileSync(join(VENDOR, 'cursor-liquido', 'cursor-liquido.js'));
   checkCursorBundle(js);
-  expectHash('vendor cursor-liquido.js', js, report.cursor.files['cursor-liquido.js']);
-  expectHash('vendor cursor-liquido.css', readFileSync(join(VENDOR, 'cursor-liquido', 'cursor-liquido.css')), report.cursor.files['cursor-liquido.css']);
+  expectHash('vendor cursor-liquido.js', js, CURSOR.files['cursor-liquido.js']);
+  expectHash('vendor cursor-liquido.css', readFileSync(join(VENDOR, 'cursor-liquido', 'cursor-liquido.css')), CURSOR.files['cursor-liquido.css']);
   return report;
 }
 

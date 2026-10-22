@@ -1,4 +1,4 @@
-/* Papacito Juice 1.0.0. MIT, (c) 2026 Jorge Suárez. Code only: Moki artwork
+/* Papacito Juice 1.0.1. MIT, (c) 2026 Jorge Suárez. Code only: Moki artwork
  * and the personal brand are not licensed by this file.
  * Personal-brand profile of Game Feel. A Papacito Juice page always has juice
  * 1.2.0 (core, Juega menu, Hardcore), authorized Moki 1.2.0 with its artwork,
@@ -13,7 +13,7 @@
   'use strict';
   const PROFILE = Object.freeze({
     name: 'papacito-juice',
-    version: '1.0.0',
+    version: '1.0.1',
     juice: '1.2.0',
     mascot: 'Moki',
     // Page configuration lives in <html>, before juice.js runs.

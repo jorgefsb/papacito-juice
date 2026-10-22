@@ -1,0 +1,10 @@
+{
+  "src/papacito-juice.js": {
+    "metadataOnly": true,
+    "sha256": "2f3705c79a8d156fffaacca1a40480717b9f12e471c8867bcd990213b034680f"
+  },
+  "src/papacito-juice.css": {
+    "metadataOnly": true,
+    "sha256": "f8588c731f5b13295c8c0aa4db7bd8c6e263abbb05112284549d7deb42ed913d"
+  }
+}

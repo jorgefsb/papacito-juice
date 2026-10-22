@@ -1,7 +1,7 @@
 ---
 name: papacito-juice
 description: "Use when building or editing a page of Jorge Suárez's personal brand: brand tokens, juice levels, sound, Moki hide and seek, Cursor líquido and QA. Not for other brands."
-version: 1.0.0
+version: 1.0.1
 license: MIT
 author: Jorge Suárez
 author_note: "Instructions only. No license to Moki artwork or to the personal brand."
@@ -70,7 +70,7 @@ On by default (`data-jz-sound="on"`) with a visible mute toggle. A muted choice 
 ## 8. Installing
 
 1. Copy `juice/1.2.0/` byte for byte (core, menu, `hardcore/`, `moki/` with its WebP files and `manifest.json`) to the site's own origin. No CDN. Verify every sha256 in the repo and once served.
-2. Add Cursor líquido 1.0.0 dist and the Game Feel 1.0.0 adapter, unchanged and hash-checked.
+2. Add Cursor líquido 1.0.1 dist and the Game Feel 1.0.1 adapter, unchanged and hash-checked.
 3. `<html lang="es" data-jz-sound="on" data-moki-show="5">`, plus `data-jz-default="full"` on the home page.
 4. Head order: brand tokens, site CSS, `juice.css`, `juice-menu.css`, `hardcore.css`, `moki.css`, cursor CSS, adapter CSS. Scripts at the end with `defer` in the same order, then the profile and the site script.
 5. `await PapacitoJuice.mount({ page: 'home' | 'page' })`. If it rejects, the install is incomplete. Fix it, do not hide the error.

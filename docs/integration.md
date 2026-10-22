@@ -5,8 +5,8 @@ Pasos para una página de la marca personal. La demo [../examples/index.html](..
 ## 1. Archivos al mismo origen
 
 - juice 1.2.0 completo: los 20 archivos de su `manifest.json` más el manifest. Incluye `moki/moki.js`, `moki/moki.css` y las 12 imágenes WebP. Verifica cada sha256 en el repo y ya servido. Nunca edites una versión publicada.
-- Cursor líquido 1.0.0: `cursor-liquido.js` y `cursor-liquido.css`, renderer dorado.
-- Game Feel 1.0.0: `game-feel-cursor.js` y `game-feel-cursor.css`, con los hashes de la tabla del README.
+- Cursor líquido 1.0.1: `cursor-liquido.js` y `cursor-liquido.css`, renderer dorado.
+- Game Feel 1.0.1: `game-feel-cursor.js` y `game-feel-cursor.css`, con los hashes de la tabla del README.
 - Este perfil: `src/papacito-juice.css` y `src/papacito-juice.js`.
 
 `node scripts/setup-demo.mjs` hace la descarga y la verificación de todo eso en `vendor/` para la demo.

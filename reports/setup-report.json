@@ -1,0 +1,15 @@
+{
+  "localSetup": "PASS: stable Cursor 1.0.1 dist; verified upstream juice and local Game Feel where applicable",
+  "remoteCursor": "PASS: default release v1.0.1 JS/CSS/manifest downloaded and hash-verified",
+  "defaultSetup": "BLOCKED: HTTP 404 https://raw.githubusercontent.com/jorgefsb/game-feel/v1.0.1/src/game-feel-cursor.js; publish Game Feel v1.0.1 before retrying npm run setup without local flags",
+  "upstream": {
+    "version": "1.2.0",
+    "commit": "f1b3b9c77a43ffbcbd331bb88420a436614fdbc3",
+    "files": 20
+  },
+  "publishOrder": [
+    "cursor-liquido v1.0.1",
+    "game-feel v1.0.1",
+    "papacito-juice v1.0.1"
+  ]
+}

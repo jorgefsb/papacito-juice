@@ -7,7 +7,7 @@
 
   window.papacitoReady = PapacitoJuice.mount({ page: 'page' }).then(profile => {
     const paint = () => {
-      const s = profile.cursor.stats;
+      const s = PapacitoJuice.current.cursor.stats;
       cursorStatus.textContent = 'Juega: ' + s.juiceLevel + ' · cursor: ' + s.intensity + ' (' + s.layer + (s.radius ? ', ' + s.radius + ' px' : '') + ')';
       mokiStatus.textContent = 'Mokis de hoy: ' + Moki.found().length + ' de ' + profile.poses.length;
     };

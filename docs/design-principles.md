@@ -1,6 +1,6 @@
 # Principios del perfil
 
-Los principios generales (disparador más respuesta, proporción, capas, niveles, sonido con consentimiento, loops éticos, QA) son los de Game Feel: https://github.com/jorgefsb/game-feel/blob/main/docs/design-principles.md (destino previsto). Aquí va solo lo propio de la marca personal. Si chocan, este perfil manda para la marca personal.
+Los principios generales (disparador más respuesta, proporción, capas, niveles, sonido con consentimiento, loops éticos, QA) son los de Game Feel: https://github.com/jorgefsb/game-feel/blob/main/docs/design-principles.md. Aquí va solo lo propio de la marca personal. Si chocan, este perfil manda para la marca personal.
 
 ## Alcance
 

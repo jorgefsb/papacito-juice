@@ -1,14 +1,14 @@
 # Arquitectura
 
-Papacito Juice no tiene motor propio. Es una capa delgada que valida la página y monta el adapter genérico de Game Feel. Las razones del adapter (un solo dueño del puntero, por qué la estela vieja de Hardcore se oculta con CSS, idempotencia) están en la arquitectura de Game Feel: https://github.com/jorgefsb/game-feel/blob/main/docs/architecture.md (destino previsto).
+Papacito Juice no tiene motor propio. Es una capa delgada que valida la página y monta el adapter genérico de Game Feel. Las razones del adapter (un solo dueño del puntero, por qué la estela vieja de Hardcore se oculta con CSS, idempotencia) están en la arquitectura de Game Feel: https://github.com/jorgefsb/game-feel/blob/main/docs/architecture.md.
 
 ## Capas
 
 ```
 <html data-jz-sound="on" data-moki-show="5" [data-jz-default="full" en la home]>   configuración de la página
 juice.js · juice-menu.js · hardcore.js · moki.js (1.2.0)                            nivel, sonido, menú, Hardcore, Moki
-cursor-liquido.js (1.0.0)                                                            estela del puntero
-game-feel-cursor.js (1.0.0)                                                          un solo cursor que sigue Juega
+cursor-liquido.js (1.0.1)                                                            estela del puntero
+game-feel-cursor.js (1.0.1)                                                          un solo cursor que sigue Juega
 papacito-juice.js (este repo)                                                        valida el perfil y monta lo anterior
 ```
 
